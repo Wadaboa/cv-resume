@@ -1,6 +1,6 @@
 # Curriculum Vitae
 In this repository you can find my personal curriculum vitae and résumé, 
-written in LaTeX and based on the template [awesome-cv](https://github.com/posquit0/Awesome-CV).\
+written in LaTeX and based on the template [awesome-cv](https://github.com/posquit0/Awesome-CV). 
 This template is not a package available on `CTAN`, but only on the author's Github page, so in the
 `templates/` folder there is a copy of the original `.cls` file, with minor tweaks and adjustments to suit my needs.
 
