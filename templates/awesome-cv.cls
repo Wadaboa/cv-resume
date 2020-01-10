@@ -673,6 +673,27 @@
   \vspace{-4.0mm}
 }
 
+% Define a cventry with logo aside
+\newlength{\photowidth}
+\setlength{\photowidth}{1.5cm}
+\newcommand*{\logocventry}[6]{%
+  \vspace{-1.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{minipage}[c]{\photowidth + 1.0mm}
+    \includegraphics[width=\photowidth]{#6}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[c][][t]{\textwidth -\photowidth - 0.2cm}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 5.2cm} R{5.2cm}}
+      \ifempty{#2#3}
+        {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+        {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+        \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+    \end{tabular*}%
+  \end{minipage}
+}
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
