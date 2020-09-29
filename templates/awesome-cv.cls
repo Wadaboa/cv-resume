@@ -90,7 +90,6 @@
   pdfkeywords={}
 }
 
-
 %-------------------------------------------------------------------------------
 %                Configuration for layout
 %-------------------------------------------------------------------------------
@@ -214,6 +213,10 @@
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+
+% For elements of exp
+\newcommand*{\exptypestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
+\newcommand*{\expsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
@@ -637,7 +640,7 @@
     \end{tabular*}
   \end{center}
 }
-% Define a line of cv information(honor, award or something else)
+% Define a line of cv information (honor, award or something else)
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
@@ -653,14 +656,14 @@
     \end{tabular*}
   \end{center}
 }
-% Define a line of cv information(skill)
+% Define a line of cv information (skill)
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{
   \skilltypestyle{#1} & \skillsetstyle{#2}
   \\
 }
 
-% Define an environment for cvitems(for cventry)
+% Define an environment for cvitems (for cventry)
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
   \begin{justify}
@@ -671,6 +674,27 @@
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
+}
+
+% Define an environment for cvexp (for cventry)
+% Usage: \cvexp{<project>}{<achievements>}{<technologies>}
+\newcommand*{\cvexp}[3]{%
+  \vspace{-2.0mm}
+  \def\achievements{#2}%
+  \begin{center}
+  \setlength\tabcolsep{1ex}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r K{14cm}}
+    \ifx\achievements\empty
+      \exptypestyle{Project} & \expsetstyle{#1} \\
+    \else
+      \exptypestyle{Project} & \expsetstyle{#1} \\
+      \exptypestyle{Achievements} & \expsetstyle{#2} \\
+    \fi
+  \end{tabular*}
+  \end{center}
+  \vspace{2.0mm}
+  \@for \listelement:=#3\do{\expandafter{\texttt{\listelement}~~}}%
 }
 
 % Define a cventry with logo aside
