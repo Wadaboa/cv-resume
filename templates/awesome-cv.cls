@@ -680,17 +680,28 @@
 % Usage: \cvexp{<project>}{<achievements>}{<technologies>}
 \newcommand*{\cvexp}[3]{%
   \vspace{-2.0mm}
-  \def\achievements{#2}%
   \begin{center}
   \setlength\tabcolsep{1ex}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r K{14cm}}
-    \ifx\achievements\empty
-      \exptypestyle{Project} & \expsetstyle{#1} \\
-    \else
-      \exptypestyle{Project} & \expsetstyle{#1} \\
-      \exptypestyle{Achievements} & \expsetstyle{#2} \\
-    \fi
+    \exptypestyle{Project} & \expsetstyle{#1} \\
+    \exptypestyle{Achievements} & \expsetstyle{#2} \\
+  \end{tabular*}
+  \end{center}
+  \vspace{2.0mm}
+  \@for \listelement:=#3\do{\expandafter{\texttt{\listelement}~~}}%
+}
+
+% Define an environment for cvedu (for cventry)
+% Usage: \cvedu{<grade>}{<thesis>}{<technologies>}
+\newcommand*{\cvedu}[3]{%
+  \vspace{-2.0mm}
+  \begin{center}
+  \setlength\tabcolsep{1ex}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l K{14cm}}
+    \exptypestyle{Grade} & \expsetstyle{#1} \\
+    \exptypestyle{Thesis} & \expsetstyle{#2} \\
   \end{tabular*}
   \end{center}
   \vspace{2.0mm}
