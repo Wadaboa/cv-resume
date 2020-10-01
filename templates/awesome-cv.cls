@@ -214,9 +214,9 @@
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
-% For elements of exp
-\newcommand*{\exptypestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
-\newcommand*{\expsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+% For elements of exp/edu
+\newcommand*{\expedutypestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
+\newcommand*{\expedusetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
@@ -679,31 +679,29 @@
 % Define an environment for cvexp (for cventry)
 % Usage: \cvexp{<project>}{<achievements>}{<technologies>}
 \newcommand*{\cvexp}[3]{%
-  \vspace{-2.0mm}
-  \begin{center}
+  \vspace{-3.0mm}
   \setlength\tabcolsep{1ex}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r K{14cm}}
-    \exptypestyle{Project} & \expsetstyle{#1} \\
-    \exptypestyle{Achievements} & \expsetstyle{#2} \\
+  \setlength{\extrarowheight}{1pt}
+  \begin{tabular*}{\textwidth}{ r L{\textwidth - 2.5cm} }
+    \expedutypestyle{Project} & \expedusetstyle{#1}
+    \ifempty{#2}{}{\\ \expedutypestyle{Achievements} & \expedusetstyle{#2}}
   \end{tabular*}
-  \end{center}
-  \vspace{2.0mm}
+  \newline
+  \ifempty{#2}{\vspace{1.0mm}}{\vspace{2.0mm}}
   \@for \listelement:=#3\do{\expandafter{\texttt{\listelement}~~}}%
 }
 
 % Define an environment for cvedu (for cventry)
 % Usage: \cvedu{<grade>}{<thesis>}{<technologies>}
 \newcommand*{\cvedu}[3]{%
-  \vspace{-2.0mm}
-  \begin{center}
+  \vspace{-3.0mm}
   \setlength\tabcolsep{1ex}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l K{14cm}}
-    \exptypestyle{Grade} & \expsetstyle{#1} \\
-    \exptypestyle{Thesis} & \expsetstyle{#2} \\
+  \setlength{\extrarowheight}{1pt}
+  \begin{tabular*}{\textwidth}{ r L{\textwidth - 2.5cm} }
+    \expedutypestyle{Grade} & \expedusetstyle{#1} \\
+    \expedutypestyle{Thesis} & \expedusetstyle{#2}
   \end{tabular*}
-  \end{center}
+  \newline
   \vspace{2.0mm}
   \@for \listelement:=#3\do{\expandafter{\texttt{\listelement}~~}}%
 }
