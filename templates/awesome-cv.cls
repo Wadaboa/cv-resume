@@ -672,11 +672,13 @@
 
 % Define an environment for cvskill
 \newenvironment{cvskills}{
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2mm}
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r K{8.2cm}}
-}{
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.8}}}
+}{%
     \end{tabular*}
   \end{center}
 }
@@ -715,6 +717,13 @@
   \@for \listelement:=#3\do{\expandafter{\texttt{\listelement}~~}}%
 }
 
+% Define an environment for cvexptech (for cventry)
+% Usage: \cvexptech{<technologies>}
+\newcommand*{\cvexptech}[1]{%
+  \vspace{4.0mm}
+  \@for \listelement:=#1\do{\expandafter{\texttt{\listelement}~~}}%
+}
+
 % Define an environment for cvedu (for cventry)
 % Usage: \cvedu{<grade>}{<thesis>}{<technologies>}
 \newcommand*{\cvedu}[3]{%
@@ -738,7 +747,7 @@
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{minipage}[c]{\photowidth + 1.0mm}
-    \includegraphics[width=\photowidth]{#6}
+    \includegraphics[width=0.8\photowidth]{#6}
   \end{minipage}
   \hfill
   \begin{minipage}[c][][t]{\textwidth -\photowidth - 0.2cm}
